@@ -112,9 +112,9 @@ $RECYCLE.BIN/
 # Docker
 *.log
 *.lock
-docker-compose.override.yml
-**/Dockerfile
-**/docker-compose.yml
+# docker-compose.override.yml
+# **/Dockerfile
+# **/docker-compose.yml
 
 # React / Node.js
 node_modules/
