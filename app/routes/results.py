@@ -1,6 +1,8 @@
+# routes/results.py
+
 from flask import Blueprint, jsonify
-from backend.auth import auth
-from backend.db import cursor
+from modules.auth import auth
+from modules.db import cursor
 
 results_bp = Blueprint('results', __name__)
 

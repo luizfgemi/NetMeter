@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify
-from backend.auth import auth
-from backend.db import cursor, conn
-import speedtest
 from datetime import datetime
+from flask import Blueprint, jsonify
+import speedtest
+from modules.auth import auth
+from modules.db import cursor, conn
 
 speedtest_bp = Blueprint('speedtest', __name__)
 

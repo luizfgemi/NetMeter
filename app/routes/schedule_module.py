@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from backend.auth import auth
-from backend.routes.speedtest import run_speedtest
+from modules.auth import auth
+from .speedtest_module import run_speedtest
 import schedule
 
 schedule_bp = Blueprint('schedule', __name__)

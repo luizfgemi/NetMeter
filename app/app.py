@@ -1,16 +1,15 @@
 import os
-import schedule  
 import time
 from threading import Thread
+import schedule  
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from .auth import auth, setup_initial_user
-from .db import create_tables
-from .routes.speedtest import speedtest_bp
-from .routes.schedule import schedule_bp
-from .routes.results import results_bp
+from routes import results_bp, schedule_bp, speedtest_bp
+from modules import setup_initial_user, create_tables
 
-app = Flask(__name__, static_folder="../build")
+# Configura a aplicação Flask
+app = Flask(__name__, static_folder="static")
+
 CORS(app)
 
 create_tables()
@@ -23,10 +22,7 @@ app.register_blueprint(results_bp)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_frontend(path):
-    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
+    return send_from_directory(app.root_path, 'index.html')
 
 def run_scheduler():
     while True:
@@ -36,4 +32,4 @@ def run_scheduler():
 if __name__ == '__main__':
     scheduler_thread = Thread(target=run_scheduler)
     scheduler_thread.start()
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=5000)

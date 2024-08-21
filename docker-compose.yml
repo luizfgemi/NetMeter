@@ -1,0 +1,14 @@
+services:
+  netmeter:
+    build: .
+    container_name: netmeter
+    ports:
+      - "5000:5000"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+      - ${APP_DATA_PATH}=/config
+    volumes:
+      - ${APP_DATA_PATH}/netmeter:/config
+    restart: unless-stopped
