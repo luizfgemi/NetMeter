@@ -31,4 +31,4 @@ jobs:
       run: echo "PYTHONPATH=backend" >> $GITHUB_ENV
 
     - name: Run pylint
-      run: pylint backend/--fail-under=5
+      run: pylint backend/ --fail-under=5
