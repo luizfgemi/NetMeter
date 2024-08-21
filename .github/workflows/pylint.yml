@@ -27,6 +27,8 @@ jobs:
         pip install --no-cache-dir -r backend/requirements.txt
         pip install pylint
 
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=backend" >> $GITHUB_ENV
+
     - name: Run pylint
-      run: |
-        pylint backend/
+      run: pylint backend/
